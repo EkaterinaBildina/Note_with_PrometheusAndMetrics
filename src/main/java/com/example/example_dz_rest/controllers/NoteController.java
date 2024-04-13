@@ -21,8 +21,8 @@ import java.util.Optional;
 public class NoteController {
     @Autowired
     private final NoteService noteService;
+    @Autowired
     private final FileGateway fileGateway;
-
 
     @PostMapping
     public ResponseEntity<Note> addNote(@RequestBody Note note) {

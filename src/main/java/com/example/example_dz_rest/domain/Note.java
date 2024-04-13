@@ -28,10 +28,10 @@ public class Note {
     @Column(nullable = false)
     private LocalDateTime creationDate;
 
-    public Note(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
+//    public Note(String title, String content) {
+//        this.title = title;
+//        this.content = content;
+//    }
 
 
 }
