@@ -39,7 +39,7 @@ public class IntegrationConfig {
     public FileWritingMessageHandler messageHandler() {
         FileWritingMessageHandler handler =
                 new FileWritingMessageHandler(new File(
-                        "D:/ДИПЛОМ/OrderApp_HW12/files"));
+                        "D:/ДИПЛОМ/example_dz_rest/files"));
         handler.setExpectReply(false);
         handler.setFileExistsMode(FileExistsMode.APPEND);
         handler.setAppendNewLine(true);
