@@ -1,26 +1,34 @@
 package com.example.example_dz_rest.controllers;
 
 import com.example.example_dz_rest.domain.Note;
+import com.example.example_dz_rest.service.FileGateway;
 import com.example.example_dz_rest.service.NoteService;
-import lombok.AllArgsConstructor;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/notes")
 public class NoteController {
 
     private final NoteService noteService;
+    private final FileGateway fileGateway;
 
 
     @PostMapping
     public ResponseEntity<Note> addNote(@RequestBody Note note) {
-        Note newNote = noteService.addNote(note);
-        return ResponseEntity.ok(newNote);
+//        Note newNote = noteService.addNote(note);
+//        return ResponseEntity.ok(newNote);
+        note.setCreation(LocalDateTime.now());
+        fileGateway.writeToFile(note.getTitle() + ".txt", note.toString());
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping

@@ -1,12 +1,18 @@
 package com.example.example_dz_rest.domain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
 
 import java.time.LocalDateTime;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Note {
 
     @Id
@@ -22,4 +28,11 @@ public class Note {
     @Column(nullable = false)
     private LocalDateTime creationDate;
 
+    public Note(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
+    public void setCreation(LocalDateTime now) {
+    }
 }
