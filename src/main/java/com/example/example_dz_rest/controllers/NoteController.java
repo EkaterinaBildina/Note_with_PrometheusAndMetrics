@@ -14,13 +14,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-@RequiredArgsConstructor
+
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/notes")
 public class NoteController {
     @Autowired
     private final NoteService noteService;
-    @Autowired
     private final FileGateway fileGateway;
 
 
@@ -28,7 +28,7 @@ public class NoteController {
     public ResponseEntity<Note> addNote(@RequestBody Note note) {
 //        Note newNote = noteService.addNote(note);
 //        return ResponseEntity.ok(newNote);
-        note.setCreation(LocalDateTime.now());
+        note.setCreationDate(LocalDateTime.now());
         fileGateway.writeToFile(note.getTitle() + ".txt", note.toString());
         return new ResponseEntity<>(HttpStatus.OK);
     }

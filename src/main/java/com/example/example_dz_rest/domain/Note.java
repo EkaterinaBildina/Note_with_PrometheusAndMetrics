@@ -33,6 +33,5 @@ public class Note {
         this.content = content;
     }
 
-    public void setCreation(LocalDateTime now) {
-    }
+
 }
