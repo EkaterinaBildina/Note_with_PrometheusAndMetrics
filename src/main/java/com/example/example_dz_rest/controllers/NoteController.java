@@ -4,6 +4,7 @@ import com.example.example_dz_rest.domain.Note;
 import com.example.example_dz_rest.service.FileGateway;
 import com.example.example_dz_rest.service.NoteService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +18,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/notes")
 public class NoteController {
-
+    @Autowired
     private final NoteService noteService;
+    @Autowired
     private final FileGateway fileGateway;
 
 
