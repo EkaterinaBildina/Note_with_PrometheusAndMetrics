@@ -2,8 +2,13 @@ spring:
   jpa:
     generate-ddl: false
     hibernate.ddl-auto: none
+    datasource:
+      url: jdbc:mysql://localhost:8085/notes
+
 server:
   port: 8085
+
+
 
 management:
   endpoints:
