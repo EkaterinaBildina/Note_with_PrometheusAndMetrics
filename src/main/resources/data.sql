@@ -1,2 +1,2 @@
-INSERT INTO note (title, content, creationDate)
-VALUES ( 'rss msg', 'chanel to transformer to do', CURRENT_TIMESTAMP);
+INSERT INTO note (creationDate, title, content)
+VALUES (CURRENT_TIMESTAMP, 'rss msg', 'chanel transformering to do');

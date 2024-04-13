@@ -4,6 +4,7 @@ import com.example.example_dz_rest.domain.Note;
 import com.example.example_dz_rest.service.FileGateway;
 import com.example.example_dz_rest.service.NoteService;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +38,7 @@ public class NoteController {
     public ResponseEntity<List<Note>> getAllNotes() {
         List<Note> notes = noteService.getAllNotes();
         return ResponseEntity.ok(notes);
+
     }
 
     @GetMapping("/{id}")

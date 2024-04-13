@@ -26,8 +26,7 @@ public class Note {
     private String content;
 
     @Column(nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private LocalDateTime creationDate;
+        private LocalDateTime creationDate;
 
 //    public Note(String title, String content) {
 //        this.title = title;
