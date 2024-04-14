@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-
 import java.time.LocalDateTime;
 
 @Data
@@ -26,12 +24,7 @@ public class Note {
     private String content;
 
     @Column(nullable = false)
-        private LocalDateTime creationDate;
-
-//    public Note(String title, String content) {
-//        this.title = title;
-//        this.content = content;
-//    }
+    private LocalDateTime creationDate;
 
 
 }
