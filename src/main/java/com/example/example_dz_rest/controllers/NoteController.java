@@ -29,7 +29,7 @@ public class NoteController {
         Note newNote = noteService.addNote(note);
         return ResponseEntity.ok(newNote);
     }
-    @PostMapping("/addNoteToFile")
+    @PostMapping("/addnotetofile")
     public ResponseEntity<Note> addNoteToFile(@RequestBody Note note) {
         note.setCreationdate(LocalDateTime.now());
         fileGateway.writeToFile(note.getTitle() + ".txt", note.toString());
