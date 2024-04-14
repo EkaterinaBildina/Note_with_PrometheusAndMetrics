@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "note")
-public class Note {
+public abstract class Note {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,4 +28,5 @@ public class Note {
     private LocalDateTime creationdate;
 
 
+    public abstract void writeNote();
 }

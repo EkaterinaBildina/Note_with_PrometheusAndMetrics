@@ -2,6 +2,8 @@ package com.example.example_dz_rest.service;
 
 import com.example.example_dz_rest.domain.Note;
 import com.example.example_dz_rest.repository.NoteRepository;
+import factory.NoteFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -12,13 +14,18 @@ import java.util.Optional;
 public class NoteService {
     private final NoteRepository noteRepository;
 
-    public NoteService(NoteRepository noteRepository) {
+    private NoteFactory noteFactory;
+
+    public NoteService(NoteRepository noteRepository, @Qualifier("noteAFactory") NoteFactory noteFactory) {
         this.noteRepository = noteRepository;
+        this.noteFactory = noteFactory;
     }
+
 
     public Note addNote(Note note) {
         note.setCreationdate(LocalDateTime.now());
-        return noteRepository.save(note);
+        return noteRepository.save(noteFactory.createNote(note));
+        //return noteRepository.save(note);
     }
 
     public List<Note> getAllNotes() {

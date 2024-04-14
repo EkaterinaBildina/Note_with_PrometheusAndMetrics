@@ -1,9 +1,12 @@
 package com.example.example_dz_rest.controllers;
 
 import com.example.example_dz_rest.domain.Note;
+import com.example.example_dz_rest.domain.NoteA;
+import com.example.example_dz_rest.domain.NoteB;
 import com.example.example_dz_rest.service.FileGateway;
 import com.example.example_dz_rest.service.NoteService;
 
+import factory.NoteFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,17 +26,31 @@ public class NoteController {
     private final NoteService noteService;
     @Autowired
     private final FileGateway fileGateway;
+    @Autowired
+    private final NoteFactory noteFactory;
 
     @PostMapping
     public ResponseEntity<Note> addNote(@RequestBody Note note) {
         Note newNote = noteService.addNote(note);
         return ResponseEntity.ok(newNote);
     }
+
     @PostMapping("/addnotetofile")
     public ResponseEntity<Note> addNoteToFile(@RequestBody Note note) {
         note.setCreationdate(LocalDateTime.now());
         fileGateway.writeToFile(note.getTitle() + ".txt", note.toString());
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/fabric")
+    public Note addNoteByFactory(@RequestBody String type, Note note) {
+        if (type.equalsIgnoreCase("A")) {
+            return new NoteA();
+        } else if (type.equalsIgnoreCase("B")) {
+            return new NoteB();
+        } else {
+            return null;
+        }
     }
 
     @GetMapping

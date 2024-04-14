@@ -1,8 +1,12 @@
 package com.example.example_dz_rest.configuration;
 
 
+import factory.NoteAFactory;
+import factory.NoteBFactory;
+import factory.NoteFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.annotation.Transformer;
 import org.springframework.integration.channel.DirectChannel;
@@ -45,6 +49,17 @@ public class IntegrationConfig {
         handler.setAppendNewLine(true);
 
         return handler;
+    }
+
+    @Bean
+    @Primary
+    public NoteFactory noteAFactory() {
+        return new NoteAFactory();
+    }
+
+    @Bean
+    public NoteFactory noteBFactory() {
+        return new NoteBFactory();
     }
 
 }
