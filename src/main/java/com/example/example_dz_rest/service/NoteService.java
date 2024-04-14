@@ -17,7 +17,7 @@ public class NoteService {
     }
 
     public Note addNote(Note note) {
-        note.setCreationDate(LocalDateTime.now());
+        note.setCreationdate(LocalDateTime.now());
         return noteRepository.save(note);
     }
 

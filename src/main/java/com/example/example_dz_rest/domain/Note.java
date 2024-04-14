@@ -25,7 +25,7 @@ public class Note {
     private String content;
 
     @Column(nullable = false)
-    private LocalDateTime creationDate;
+    private LocalDateTime creationdate;
 
 
 }
