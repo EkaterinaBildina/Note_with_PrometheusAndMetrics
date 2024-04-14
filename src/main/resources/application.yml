@@ -1,20 +1,20 @@
 spring:
+  application:
+    name: example_dz_rest
   jpa:
     generate-ddl: false
     hibernate.ddl-auto: none
     datasource:
       url: jdbc:mysql://localhost:8085/notes
 
+
 server:
   port: 8085
-
-
 
 management:
   endpoints:
     web:
       exposure:
         include:  metrics, prometheus
-
     health:
       show-details: always

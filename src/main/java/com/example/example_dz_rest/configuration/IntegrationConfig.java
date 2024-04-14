@@ -30,8 +30,8 @@ public class IntegrationConfig {
     @Transformer(inputChannel = "textInputChanel", outputChannel = "fileWriterChanel")
     public GenericTransformer<String, String> mainTransformer() {
         return text -> {
-            //какая-то логика
-            return text;
+            String reversedText = new StringBuilder(text).reverse().toString();
+            return reversedText;
         };
     }
     @Bean
